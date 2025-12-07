@@ -37,7 +37,6 @@ ScrollReveal().reveal(".about__btn", {
   delay: 1000,
 });
 
-
 ScrollReveal().reveal(".section-container.gallery-page h2", {
   ...scrollRevealOption,
 });
@@ -48,11 +47,10 @@ ScrollReveal().reveal(".gallery-grid", {
 });
 // finishe animation
 
-
-// ======================================================
+// --------------------------------------------
 // FORMATA datas  →  sempre retorna DD/MM/YYYY
 // Aceita: "2025-12-16" OU Date()
-// ======================================================
+// --------------------------------------------
 function formatDate(dateInput) {
   if (!dateInput) return "";
 
@@ -78,19 +76,17 @@ function formatDate(dateInput) {
   return "";
 }
 
-
 // Converte DD/MM/YYYY → YYYY-MM-DD
 function revertDateFormat(dmy) {
   const [day, month, year] = dmy.split("/");
   return `${year}-${month}-${day}`;
 }
 
-
 // BOOKING
 
-// ================================================
+// -------------------------------------------------------
 // CARREGAR PARÂMETROS DA URL (CHECKIN / CHECKOUT / GUEST)
-// ================================================
+// -------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
 
   const params = new URLSearchParams(window.location.search);
@@ -145,7 +141,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   });
 
-
   // Botão SEARCH
   const searchBtn = document.getElementById("searchBtn");
 if (searchBtn) {
@@ -171,11 +166,10 @@ if (searchBtn) {
 
 });
 
-
 // EDIT BOOKING
-// ============================================================
+// ----------------------------------------------------
 // FUNÇÃO: abrir o painel quando clicar em Edit Booking
-// ============================================================
+// ----------------------------------------------------
 const editBtn = document.querySelector(".edit-btn-container .btn");
 if (editBtn) {
   editBtn.addEventListener("click", () => {
@@ -191,13 +185,11 @@ if (editBtn) {
   });
 }
 
-
-// ============================================================
+// --------------------------------------------
 // FUNÇÃO: fechar o painel
-// ============================================================
-// ============================================================
+// --------------------------------------------
 // FECHAR O PAINEL — só existe em booking.html
-// ============================================================
+// --------------------------------------------
 
 const closeEditBtn = document.getElementById("close-edit");
 
@@ -207,10 +199,9 @@ if (closeEditBtn) {
   });
 }
 
-
-// ============================================================
+// -------------------------------------------------
 // FUNÇÃO: processar o formulário e fazer nova busca
-// ============================================================
+// -------------------------------------------------
 const submitForm = document.getElementById("edit-form");
 if (submitForm) {
 document.getElementById("edit-form").addEventListener("submit", (e) => {
@@ -229,15 +220,14 @@ document.getElementById("edit-form").addEventListener("submit", (e) => {
 });
 }
 
-// ============================================================
+// ---------------------------------------
 // ATIVAR FLATPICKR NO PAINEL
 // (calendário para escolher novas datas)
-// ============================================================
+// ---------------------------------------
 flatpickr("#edit-dates", {
   mode: "range",     // permite selecionar 2 datas (início e fim)
   minDate: "today",  // evita datas antigas
 });
-
 
 //ROOMS
 
@@ -303,6 +293,7 @@ const rooms = [
       { start: "2026-12-10", end: "2026-12-31" },
     ]
   },
+
   {
     id: 4,
     name: "Executive Suite +PLUS",
@@ -384,10 +375,10 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// ================================================
+// -----------------------------------------------
 // BOTÕES DE VOLTAR ENTRE AS ETAPAS
 // Reaproveita a mesma lógica para qualquer "back"
-// ================================================
+// -----------------------------------------------
 document.addEventListener("click", (e) => {
 
   // Voltar para QUARTOS
@@ -405,9 +396,9 @@ document.addEventListener("click", (e) => {
 })
 
 
-// ===========================================
+// ---------------------------------------------
 // Carrega o quarto selecionado no painel resumo
-// ===========================================
+// ---------------------------------------------
 function loadSelectedRoom() {
 
   const roomId = sessionStorage.getItem("selectedRoom");
@@ -434,9 +425,9 @@ function loadSelectedRoom() {
   updateTotal();
 }
 
-// ===========================================
+// ---------------------------------------
 // Calcula o total final (noites + extras)
-// ===========================================
+// ---------------------------------------
 function updateTotal() {
 
   const base = Number(sessionStorage.getItem("baseTotal")) || 0;
@@ -465,9 +456,9 @@ document.addEventListener("change", (e) => {
   }
 });
 
-// ===========================================
+// ---------------------------------------
 // Quando o usuário clica em "Select Room"
-// ===========================================
+// ---------------------------------------
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("select-room-btn")) {
 
@@ -545,11 +536,10 @@ document.getElementById("go-details").addEventListener("click", () => {
 });
 }
 
-
-// ============================================================
+// -----------------------------------------------------------
 // FUNÇÃO QUE VERIFICA SE O INTERVALO SELECIONADO PELO USUÁRIO
 // ENTRA EM CONFLITO COM AS DATAS OCUPADAS DO QUARTO
-// ============================================================
+// -----------------------------------------------------------
 function isRoomAvailable(room, checkin, checkout) {
 
   const userStart = new Date(checkin);
