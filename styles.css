@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-/* ----------------- GENERAL SETUPS ----------------- */
+/*  GENERAL SETUPS  */
 :root { /* global scope */
   /* color palette variables created for easy use across the site */
   --primary-color: #1B3358;
@@ -64,9 +64,9 @@ body {
   background-color: var(--secondary-color) !important;
 }
 
-/* ----------------- GENERAL SETUPS ----------------- */
+/*  GENERAL SETUPS  */
 
-/* ----------------- NAVBAR SETUPS ----------------- */
+/*  NAVBAR SETUPS  */
 
 .navbar {
   position: fixed !important;
@@ -112,10 +112,10 @@ body {
 }
 
 
-/* ---------------------------------
+/* 
    A SINGLE LINE WITH EVERYTHING ALIGNED
    breadcrumbs | info | button
-   --------------------------------------- */
+    */
 .booking-row {
   display: flex;
   align-items: center;         /* center vertically */
@@ -126,9 +126,9 @@ body {
   white-space: nowrap;         /* prevents text wrapping */
 }
 
-/* ---------------------------------
+/* 
    HOTEL-STYLE BREADCRUMB
-   --------------------------------- */
+    */
 .breadcrumbs {
   display: flex;
   align-items: center;
@@ -143,9 +143,9 @@ body {
   color: #888;
 }
 
-/* ---------------------------------
+/* 
    SUMMARY INFORMATION
-   --------------------------------- */
+    */
 .booking-info {
   display: flex;
   align-items: center;
@@ -175,18 +175,18 @@ body {
   background-color: #ccc;
 }
 
-/* ---------------------------------
+/* 
    EDIT BOOKING BUTTON
-   --------------------------------- */
+    */
 .edit-btn-container .btn {
   padding: 0.65rem 1.3rem;
   white-space: nowrap; /* prevents wrapping */
 }
 
-/* ---------------------------------
+/* 
    RESPONSIVENESS FOR VERY SMALL SCREENS
    (only if necessary)
-   --------------------------------- */
+    */
 @media (max-width: 900px) {
   .booking-row {
     flex-wrap: wrap;  /* breaks only if needed */
@@ -331,12 +331,12 @@ body {
 
 /*  */
 
-/* ---------------------------------================
+/* ================
    OVERLAID PANEL (HIDDEN)
    - Covers the entire screen
    - Dark semi-transparent background
    - Appears only when user clicks "Edit Booking"
-   ---------------------------------================ */
+   ================ */
 .edit-panel {
   position: fixed;            /* always above everything */
   top: 0;
@@ -350,11 +350,11 @@ body {
   z-index: 99999;               /* above everything */
 }
 
-/* --------------------------------
+/* 
    PANEL CONTENT
    - White box in the center
    - Rounded and padded
-   ----------------------------*/
+    */
 .edit-panel-content {
   background: white;
   width: 90%;
@@ -411,10 +411,10 @@ body {
   margin-top: 0.5rem;
 }
 
-/* --------------------------------------------
+/* 
    INPUT WITH ICON INSIDE PANEL
    - Groups icon + input inside same box
-   ----------------------------------------------- */
+    */
 .input-icon-wrapper {
   display: flex;                 /* inline icon + input */
   align-items: center;           /* center vertically */
@@ -785,9 +785,9 @@ body {
 }
 
 /* details */
-/* -------------------------
+/* 
    FINAL STEP FORM
-   -------------------------- */
+    */
 
 /* Main form container */
 .details-form {
@@ -828,9 +828,9 @@ body {
 /* end details */
 
 /* columns */
-/* ---------------------------------
+/* 
    TWO-SIDE GRID FOR EXTRAS AND DETAILS
-   --------------------------------- */
+    */
 #step-complete {
   text-align: center;
   max-width: 600px;
@@ -929,9 +929,9 @@ body {
   font-weight: 700;
 }
 
-/* ------------
+/* 
    GALLERY PAGE
-   ------------- */
+    */
 
 /* Centered title */
 .gallery-title {
