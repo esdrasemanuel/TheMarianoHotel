@@ -1,0 +1,1015 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+/* ----------------- GENERAL SETUPS ----------------- */
+:root { /* global scope */
+  --primary-color: #1B3358;
+  --secondary-color: #020c59;
+  --text-dark: #0c0a09;
+  --text-light: #78716c;
+  --white: #ffffff;
+  --max-width: 1200px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* Global resets */
+
+}
+
+img {
+  width: 100%;
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+}
+
+.logo {
+  max-width: 120px;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--white) !important;
+  background-color: var(--primary-color) !important;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--secondary-color) !important;
+}
+
+/* ----------------- GENERAL SETUPS ----------------- */
+
+/* ----------------- NAVBAR SETUPS ----------------- */
+
+.navbar {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+/* Torna o menu mobile overlay */
+@media (max-width: 991px) { /* breakpoint do navbar-expand-lg */
+  #navbarNav {
+    position: absolute;
+    top: 86px;       /* altura da navbar */
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-color);/* azul */
+    z-index: 9999;
+    padding: 1rem;
+  }
+
+  /* opcional: deixa os itens brancos */
+  #navbarNav .nav-link {
+    color: white !important;
+  }
+}
+
+
+/* BOOKING*/
+
+/* Remove espaço exagerado padrão */
+.booking-summary.section-container {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+/* Remove o padding gigante nas páginas internas */
+.booking-steps.section-container,
+.rooms-section.section-container {
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.5rem !important;
+}
+
+
+/* ============================================
+   UMA ÚNICA LINHA COM TUDO ALINHADO
+   breadcrumbs | infos | botão
+   ============================================ */
+.booking-row {
+  display: flex;
+  align-items: center;         /* centraliza verticalmente */
+  justify-content: space-between; /* distribui conteúdo */
+  gap: 2rem;
+  flex-wrap: nowrap;           /* NÃO deixa quebrar linha */
+  width: 100%;
+  white-space: nowrap;         /* impede quebra de texto */
+}
+
+/* ============================================
+   BREADCRUMB ESTILO HOTEL
+   ============================================ */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.breadcrumbs .active {
+  font-weight: bold;
+}
+
+.breadcrumbs .arrow {
+  color: #888;
+}
+
+/* ============================================
+   INFOS DO RESUMO
+   ============================================ */
+.booking-info {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.info-item:hover i,
+.info-item:hover span{
+  color: var(--primary-color);
+}
+
+
+.info-item i {
+  font-size: 1.2rem;
+  color: #444;
+}
+
+.divider {
+  width: 1px;
+  height: 22px;
+  background-color: #ccc;
+}
+
+/* ============================================
+   BOTÃO EDIT BOOKING
+   ============================================ */
+.edit-btn-container .btn {
+  padding: 0.65rem 1.3rem;
+  white-space: nowrap; /* impede quebra */
+}
+
+/* ============================================
+   RESPONSIVIDADE PARA TELAS MUITO PEQUENAS
+   (apenas se necessário)
+   ============================================ */
+@media (max-width: 900px) {
+  .booking-row {
+    flex-wrap: wrap;  /* só quebra se realmente necessário */
+    gap: 1rem;
+  }
+}
+
+
+
+/*  */
+
+/* Container do campo */
+.booking-input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Caixa branca com ícone + input alinhados */
+.booking-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 12px 14px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+/* Ícone alinhado */
+.calendar-icon {
+  font-size: 22px;
+  color: var(--primary-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* Input ocupando todo o espaço */
+#dates {
+  border: none !important;
+  outline: none;
+  width: 200px;
+  font-size: 1rem;
+  background: transparent !important;
+  text-overflow: ellipsis; /* evita corte feio */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Input criado pelo Flatpickr quando altInput = true */
+.form-control.input.active {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+
+    width: 240px !important;
+    font-size: 1rem !important;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+
+/*  */
+.section-container {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 5rem 1rem;
+}
+
+.section-subheader {
+  margin-bottom: 0.5rem;
+  position: relative;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: var(--text-dark);
+}
+
+.section-subheader::after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  transform: translate(1rem, -50%);
+  height: 2px;
+  width: 4rem;
+  background-color: var(--primary-color);
+}
+
+.section-header {
+  max-width: 600px;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 3rem;
+  color: var(--text-dark);
+}
+
+.section__description {
+  max-width: 600px;
+  margin-bottom: 1rem;
+  color: var(--text-light);
+}
+
+.header {
+  background-image: url("images/header.png");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.header_booking {
+  background-image: url("images/banner-page2.png");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  height: 326px;          /* altura exata da imagem */
+  padding-top: 56px;      /* space for navbar */
+  display: block;         /* importantíssimo */
+  position: relative;     /* needed for absolute text */
+  overflow: hidden;
+}
+
+.header_booking .header_container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0 !important;
+  margin: 0 !important;
+  text-align: center;
+}
+
+.header_booking h1 {
+  color: white;
+  font-size: 3rem;
+}
+
+
+
+/*  */
+
+
+/* ============================================================
+   PAINEL SOBREPOSTO ESCONDIDO
+   - Cobre toda a tela
+   - Fundo escuro semi-transparente
+   - Só aparece quando o usuário clica em Edit Booking
+   ============================================================ */
+.edit-panel {
+  position: fixed;            /* sempre sobre tudo */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45); /* fundo escuro */
+  display: none;                /* começa invisível */
+  justify-content: center;      /* centraliza o painel */
+  align-items: center;
+  z-index: 99999;               /* fica acima de tudo */
+}
+
+/* ============================================================
+   CONTEÚDO DO PAINEL
+   - Caixa branca no centro
+   - Arredondada e com padding
+   ============================================================ */
+.edit-panel-content {
+  background: white;
+  width: 90%;
+  max-width: 500px;              /* limite para monitores */
+  border-radius: 12px;
+  padding: 2rem;
+  animation: slideDown 0.35s ease; /* animação suave ao aparecer */
+}
+
+/* Animação descendo (efeito suave) */
+@keyframes slideDown {
+  from { transform: translateY(-30px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+/* Cabeçalho: título + botão fechar alinhados */
+.edit-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Botão X */
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* Campos do formulário */
+.edit-field {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-field label {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.edit-field input {
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+/* Botão Search Again ocupa toda a largura */
+.edit-submit {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* ============================================================
+   INPUT COM ÍCONE DENTRO DO PAINEL
+   - Agrupa ícone + input dentro da mesma caixa
+   ============================================================ */
+.input-icon-wrapper {
+  display: flex;                 /* ícone + input em linha */
+  align-items: center;           /* centraliza verticalmente */
+  gap: 0.6rem;                   /* distância entre ícone e input */
+  border: 1px solid #ccc;        /* borda igual ao input padrão */
+  padding: 0.7rem 1rem;          /* espaço interno */
+  border-radius: 8px;            /* borda arredondada */
+  background: white;             /* fundo branco */
+}
+
+/* Ícones dentro do painel */
+.input-icon-wrapper i {
+  font-size: 1.3rem;
+  color: var(--primary-color);   /* cor do seu tema */
+}
+
+/* Remove borda do input (já está dentro da caixa) */
+.input-icon-wrapper input {
+  flex: 1;                       /* ocupa todo espaço restante */
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: transparent;
+}
+
+/* end */
+
+.header_container {
+  padding-block: 10rem 15rem;
+}
+
+.header_container p {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: var(--white);
+  text-align: center;
+  opacity: 0.6;
+}
+
+.header_container h1 {
+  font-size: 4rem;
+  font-weight: 500;
+  line-height: 4.5rem;
+  color: var(--white);
+  text-align: center;
+}
+
+.header_container h1 span {
+  color: var(--primary-color);
+}
+
+.booking__container {
+  padding-block: 0;
+}
+
+.booking__form {
+  padding: 2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: var(--white);
+  border-radius: 10px;
+  transform: translateY(-50%);
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.input__group {
+  flex: 1 1 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.input__group span {
+  font-size: 1.75rem;
+  color: var(--primary-color);
+}
+
+.input__group label {
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.input__group input {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding-block: 5px;
+  color: var(--text-dark);
+  font-size: 0.9rem;
+  outline: none;
+  border: none;
+}
+
+.input__group input::placeholder {
+  color: var(--text-light);
+}
+
+.about__container {
+  overflow: hidden;
+  display: grid;
+  gap: 2rem;
+}
+
+.about__image img {
+  max-width: 450px;
+  margin: auto;
+  border-radius: 5px;
+}
+
+/* ============================
+   CONTAINER DOS QUARTOS
+   ============================ */
+#rooms-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* espaçamento entre cards */
+  margin-top: 2rem;
+}
+
+/* ============================
+   CARD DO QUARTO
+   ============================ */
+.room-card {
+  display: flex;
+  gap: 1.5rem;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  align-items: flex-start;
+}
+
+/* Card fica mais apagado quando indisponível */
+.room-card.unavailable {
+  opacity: 0.6;
+}
+
+/* ============================
+   IMAGEM DO QUARTO
+   ============================ */
+.room-img {
+   width: 340px;     
+  height: 230px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* ============================
+   CONTEÚDO DO CARD
+   ============================ */
+.room-info {
+  flex: 1;
+}
+
+/* Nome do quarto */
+.room-name {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: .5rem;
+}
+
+/* Descrição */
+.room-desc {
+  font-size: .95rem;
+  margin-bottom: .8rem;
+  color: #666;
+}
+
+/* ============================
+   LISTA DE DETALHES
+   ============================ */
+.room-details {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.room-details li {
+  margin-bottom: .3rem;
+  font-size: .95rem;
+}
+
+/* ============================
+   AVISO DE INDISPONIBILIDADE
+   ============================ */
+.room-unavailable-msg {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  background: #ffe8e8;
+  color: #d60000;
+  padding: .4rem .7rem;
+  border-radius: 6px;
+  font-size: .9rem;
+  margin-bottom: .6rem;
+}
+
+.room-unavailable-msg i {
+  font-size: 1.2rem;
+}
+
+/* ============================
+   RODAPÉ DO CARD
+   ============================ */
+.room-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: .8rem;
+}
+
+.room-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+/* Botão de selecionar */
+.select-room-btn {
+  background: var(--primary-color);
+  color: #fff;
+  padding: .6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  transition: .3s;
+}
+
+.select-room-btn:hover:not([disabled]) {
+  background: var(--secondary-color);
+}
+
+/* Botão desabilitado */
+.select-room-btn[disabled] {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+@media (max-width: 768px) {
+  .room-card {
+    flex-direction: column;
+  }
+
+  .room-img {
+    width: 100%;
+    height: 220px;
+  }
+}
+/* end card */
+
+/* extras */
+#booking-summary {
+  border: 1px solid #ddd;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background: #fff;
+  max-width: 350px;
+}
+
+#booking-summary h3,
+#booking-summary h4 {
+  margin-bottom: 10px;
+}
+
+.sum-total {
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* end extra */
+
+
+/* FOOTER */
+
+.footer {
+  background-color: var(--primary-color);
+}
+
+.footer__container {
+  display: grid;
+  gap: 5rem 2rem;
+  align-items: center;
+}
+
+.footer__col h4 {
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--white);
+}
+
+.footer__links {
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+}
+
+.footer__links a {
+  color: var(--text-light);
+  transition: 0.3s;
+}
+
+.footer__links a:hover {
+  color: var(--white);
+}
+
+.footer__socials {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer__socials img {
+  max-width: 25px;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.footer__socials img:hover {
+  opacity: 1;
+}
+
+.footer__bar {
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  text-align: center;
+}
+
+/* Centraliza a logo dentro da segunda coluna */
+.footer__col:nth-child(1) .logo {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto 1rem auto;
+}
+
+
+/* end footer */
+
+/* reponsivit */
+@media (width > 576px) {
+  .footer__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width > 768px) {
+  .about__container {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+  .footer__container {
+    grid-template-columns: repeat(2, 1fr);
+
+  }
+}
+
+
+/* detais */
+/* ============================
+   FORMULÁRIO DA ETAPA FINAL
+   ============================ */
+
+/* Container geral do formulário */
+.details-form {
+  max-width: 500px;         /* largura máxima */
+  margin: 2rem auto;        /* centraliza */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;              /* espaçamento vertical */
+}
+
+/* Cada campo (label + input) */
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Inputs e textarea */
+.form-row input,
+.form-row textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* Layout para colocar dois campos lado a lado */
+.two-col {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Botão final */
+.finish-btn {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+/* end detais */
+
+
+/* colunas */
+/* ==========================================================
+   GRID DE DOIS LADOS PARA EXTRAS E DETALHES
+   ========================================================== */
+#step-complete {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;            /* CENTRALIZA HORIZONTALMENTE */
+  padding: 40px 20px;
+}
+.steps-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* 2/3 para conteúdo, 1/3 para resumo */
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Coluna principal: extras, formulário ou quartos */
+.steps-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Coluna lateral: painel de resumo */
+.steps-summary {
+  padding: 1.5rem;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  height: fit-content; /* ajusta à altura do conteúdo */
+  position: sticky; /* fica preso ao rolar */
+  top: 120px; /* distância do topo ao rolar */
+}
+
+/* Evita que o resumo seja enorme em telas pequenas */
+@media (max-width: 900px) {
+  .steps-grid {
+    grid-template-columns: 1fr; /* vira 1 coluna só */
+  }
+}
+
+/* end colunas */
+
+
+/* Esconde o resumo na etapa inicial */
+.steps-summary {
+  display: none;
+}
+
+
+/* extra image */
+/* Ajuste das imagens dos extras */
+.extra-img {
+  width: 120px;
+  height: 90px;
+  object-fit: cover;   /* garante corte elegante */
+  border-radius: 8px;
+  margin-right: 15px;
+}
+.extra-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 12px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  margin-bottom: 1rem;
+}
+
+
+/* ============= LOADING MODAL ============= */
+.loading-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+
+}
+
+.loading-box {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: -webkit-center;
+}
+
+/* 🔥 Seu GIF ajustado */
+.loading-gif {
+  width: 120px; /* Ajuste como quiser */
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+
+/* steps bold actve*/
+
+.crumb-active {
+  font-weight: 700; /* bold */
+}
+
+
+
+
+/* ==========================
+   GALLERY PAGE
+   ========================== */
+
+/* Título central */
+.gallery-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+/* Grid responsivo — fotos em mosaico */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-auto-rows: 220px; /* altura padrão */
+  gap: 15px;
+}
+
+/* Cada célula (foto) */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* Fotos maiores (mosaico) */
+.gallery-item.large {
+  grid-row: span 2;
+  grid-column: span 2;
+}
+
+/* Imagem */
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .35s ease;
+}
+
+/* Zoom leve no hover */
+.gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+/* Ajuste mobile */
+@media (max-width: 600px) {
+  .gallery-grid {
+    grid-auto-rows: 160px;
+  }
+}
+
+
+/* Caixa principal do calendário */
+/* Muda o fundo do topo (barra onde aparece January 2026) */
+.flatpickr-calendar .flatpickr-months .flatpickr-month {
+  background: var(--primary-color) !important;
+  color: white;
+}
+
+/* Remove o gradiente azul do tema */
+.flatpickr-calendar .flatpickr-months {
+  background: var(--primary-color) !important;
+}
+
+/* Ajusta também o background atrás das setas (prev / next) */
+.flatpickr-months .flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month {
+  background: var(--primary-color) !important;
+}
+
+/* Mês e ano (texto) */
+.flatpickr-current-month .cur-month,
+.flatpickr-current-month input.cur-year {
+  color: white !important;
+}
+
