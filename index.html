@@ -1,116 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
+      <!-- Basic document metadata -->
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link
-         href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css"
-         rel="stylesheet"
-         >
+
+      <!-- Remixicon icon library -->
+      <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet">
+
+      <!-- Website favicon -->
       <link rel="icon" type="image/x-icon" href="images/logo.png">
+
+      <!-- Main stylesheet -->
       <link rel="stylesheet" href="styles.css">
+
+      <!-- Bootstrap CSS for responsive navbar and layout components -->
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+      <!-- jQuery Slim and Bootstrap JS (required for navbar toggling) -->
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+      <!-- Flatpickr date picker styles -->
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/airbnb.css">
+
       <title>The Mariano Hotel</title>
    </head>
+
    <body>
+        <!-- -----------------------
+         HEADER + NAVIGATION BAR
+         ----------------------- -->
       <header class="header">
          <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="logo">
-               <a href="#"><img src="images/logo.png" alt="logo" /></a>
-            </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+
+        <!-- Website logo -->
+        <div class="logo">
+          <a href="#"><img src="images/logo.png" alt="logo" /></a>
+        </div>
+
+            <!-- Mobile navigation toggle button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+               <span class="navbar-toggler-icon"></span>
             </button>
+
+            <!-- Menu items -->
             <div class="collapse navbar-collapse" id="navbarNav">
                <ul class="navbar-nav">
                   <li class="nav-item active">
-                     <a class="nav-link" href="#">Home </a>
+                    <!-- Current page: Home -->
+                     <a class="nav-link" href="./index.html">Home</a>
                   </li>
                   <li class="nav-item">
+                    <!-- Scroll to About section on homepage -->
                      <a class="nav-link" href="#about">About</a>
                   </li>
                   <li class="nav-item">
+                     <!-- Link to Gallery -->
                      <a class="nav-link" href="./gallery.html">Gallery</a>
                   </li>
                </ul>
             </div>
          </nav>
+
+         <!-- Hero section with hotel title -->
          <div class="section-container header_container" id="home">
             <p>Welcoming - Comfortable - Authentic</p>
-            <h1><span>THE MARIANO</span><br /> Hotel<span>.</span></h1>
+            <h1><span>THE MARIANO</span><br> Hotel<span>.</span></h1>
          </div>
       </header>
+
+      <!-- -------------------------------------------------
+           BOOKING SEARCH FORM
+           Allows users to choose dates and number of guests
+           ------------------------------------------------- -->
       <section class="section-container booking-container">
          <form action="/" class="booking__form">
-            <div class="input__group">
+
+            <!-- Date range picker -->
+            <div class="input-group">
                <span class="calendar-icon"><i class="ri-calendar-2-fill"></i></span>
                <div>
                   <label for="dates">DATES</label>
-                  <input type="text" id="dates" placeholder="Select dates" />
+                  <input type="text" id="dates" placeholder="Select dates">
                </div>
             </div>
-            <div class="input__group">
+
+            <!-- Guests selection -->
+            <div class="input-group">
                <span><i class="ri-user-fill"></i></span>
                <div>
                   <label for="guest">GUEST</label>
-                  <input type="number" id="guest" value="1" min="1" />
+                  <input type="number" id="guest" value="1" min="1">
                </div>
             </div>
-            <div class="input__group input__btn">
+
+            <!-- Search button that redirects to booking page -->
+            <div class="input-group input__btn">
                <button type="button" id="searchBtn" class="btn">SEARCH</button>
             </div>
+
          </form>
       </section>
+
+      <!-- --------------------------------------------------------------------------
+           ABOUT SECTION
+           Describes the hotel and provides a botton the quick access to gallery page
+           -------------------------------------------------------------------------- -->
       <section class="section-container about-container" id="about">
-         <div class="about__image">
-            <img src="images/about.jpg" alt="about" />
+
+         <!-- About image -->
+         <div class="about-image">
+            <img src="images/about.jpg" alt="about">
          </div>
+
+         <!-- About text content -->
          <div class="about__content">
             <p class="section-subheader">ABOUT US</p>
             <h2 class="section-header">The best of the Emerald Isle starts right here!</h2>
-            <p class="section__description">
-               With a focus on Irish hospitality, quality accommodations, and a commitment to providing a personalized and memorable stay, The Mariano Hotel is dedicated to ensuring every guest experiences the unique charm of Dublin with comfort and ease.
-               Whether you're exploring the historic landmarks, enjoying the vibrant local scene, or seeking a quiet retreat after a long journey, we strive to make your visit seamless and truly special.
+
+            <p class="section-description">
+               With a focus on Irish hospitality, quality accommodations, and a commitment to providing a personalized
+               and memorable stay, The Mariano Hotel ensures guests experience the unique charm of Dublin with comfort
+               and ease.
+               Whether you're exploring historic landmarks or relaxing after a long journey, we aim to make your visit
+               seamless and unforgettable.
             </p>
+
+            <!-- Button linking to gallery -->
             <div class="about__btn">
                <a href="./gallery.html" target="_blank">
-               <button class="btn" >See Gallery</button></a>
+                  <button class="btn">See Gallery</button>
+               </a>
             </div>
          </div>
+
       </section>
+
+      <!-- --------------------------------------
+           FOOTER SECTION
+           Contains contact info and social links
+           -------------------------------------- -->
       <footer class="footer" id="contact">
-         <div class="section-container footer__container">
-            <div class="footer__col">
+         <div class="section-container footer-container">
+
+            <!-- Footer left column -->
+            <div class="footer-col">
                <div class="logo">
-                  <a href="#home"><img src="images/logo_footer.png" alt="logo" /></a>
+                  <a href="#home"><img src="images/logo_footer.png" alt="logo"></a>
                </div>
-               <p class="section__description">
-                  Experience the invigorating pulse of Dublin - the laughter, the history, the music. Then, when the day is done, retreat effortlessly to our most exquisite and luxurious sanctuary. Your unforgettable Irish story starts the moment you receive our keys.          
+
+               <p class="section-description">
+                  Experience the invigorating pulse of Dublin — the laughter, the history, the music.
+                  Then unwind in our luxurious sanctuary. Your unforgettable Irish story begins the moment
+                  we hand you the keys.
                </p>
             </div>
-            <div class="footer__col">
+
+            <!-- Footer right column -->
+            <div class="footer-col">
                <h4>CONTACT US</h4>
-               <ul class="footer__links">
+
+               <ul class="footer-inks">
                   <li><a href="#">the.mariano.hotel@info.com</a></li>
                </ul>
-               <div class="footer__socials">
-                  <a href="#"><img src="images/facebook.png" alt="facebook" /></a>
-                  <a href="#"><img src="images/instagram.png" alt="instagram" /></a>
-                  <a href="#"><img src="images/youtube.png" alt="youtube" /></a>
-                  <a href="#"><img src="images/twitter.png" alt="twitter" /></a>
+
+               <div class="footer-socials">
+                  <a href="#"><img src="images/facebook.png" alt="facebook"></a>
+                  <a href="#"><img src="images/instagram.png" alt="instagram"></a>
+                  <a href="#"><img src="images/youtube.png" alt="youtube"></a>
+                  <a href="#"><img src="images/twitter.png" alt="twitter"></a>
                </div>
             </div>
+
          </div>
-         <div class="footer__bar">
+
+         <!-- Footer copyright bar -->
+         <div class="footer-bar">
             Copyright © 2025 The Mariano Hotel. All rights reserved.
          </div>
       </footer>
+
+      <!-- External libraries -->
       <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
       <script src="https://unpkg.com/scrollreveal"></script>
+
+      <!-- Main JavaScript file (handles search and animations) -->
       <script src="main.js"></script>
    </body>
 </html>

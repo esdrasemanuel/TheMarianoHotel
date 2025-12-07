@@ -249,8 +249,6 @@ body {
     overflow: hidden;
 }
 
-
-
 /*  */
 .section-container {
   max-width: var(--max-width);
@@ -285,7 +283,7 @@ body {
   color: var(--text-dark);
 }
 
-.section__description {
+.section-description {
   max-width: 600px;
   margin-bottom: 1rem;
   color: var(--text-light);
@@ -326,10 +324,7 @@ body {
   font-size: 3rem;
 }
 
-
-
 /*  */
-
 
 /* ============================================================
    PAINEL SOBREPOSTO ESCONDIDO
@@ -483,7 +478,7 @@ body {
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
 }
 
-.input__group {
+.input-group {
   flex: 1 1 220px;
   display: flex;
   align-items: center;
@@ -491,17 +486,17 @@ body {
   gap: 1rem;
 }
 
-.input__group span {
+.input-group span {
   font-size: 1.75rem;
   color: var(--primary-color);
 }
 
-.input__group label {
+.input-group label {
   font-weight: 500;
   color: var(--text-dark);
 }
 
-.input__group input {
+.input-group input {
   display: block;
   width: 100%;
   max-width: 100%;
@@ -512,7 +507,7 @@ body {
   border: none;
 }
 
-.input__group input::placeholder {
+.input-group input::placeholder {
   color: var(--text-light);
 }
 
@@ -523,7 +518,7 @@ body {
   margin-top: -130px !important;;
 }
 
-.about__image img {
+.about-image img {
   max-width: 450px;
   margin: auto;
   border-radius: 5px;
@@ -702,35 +697,35 @@ body {
   background-color: var(--primary-color);
 }
 
-.footer__container {
+.footer-container {
   display: grid;
   gap: 5rem 2rem;
   align-items: center;
 }
 
-.footer__col h4 {
+.footer-col h4 {
   margin-bottom: 2rem;
   font-size: 1.2rem;
   font-weight: 500;
   color: var(--white);
 }
 
-.footer__links {
+.footer-inks {
   list-style: none;
   display: grid;
   gap: 1rem;
 }
 
-.footer__links a {
+.footer-inks a {
   color: var(--text-light);
   transition: 0.3s;
 }
 
-.footer__links a:hover {
+.footer-inks a:hover {
   color: var(--white);
 }
 
-.footer__socials {
+.footer-socials {
   margin-top: 2rem;
   display: flex;
   align-items: center;
@@ -738,17 +733,17 @@ body {
   flex-wrap: wrap;
 }
 
-.footer__socials img {
+.footer-socials img {
   max-width: 25px;
   opacity: 0.8;
   transition: 0.3s;
 }
 
-.footer__socials img:hover {
+.footer-socials img:hover {
   opacity: 1;
 }
 
-.footer__bar {
+.footer-bar {
   padding: 1rem;
   font-size: 0.9rem;
   color: var(--text-light);
@@ -756,7 +751,7 @@ body {
 }
 
 /* Centraliza a logo dentro da segunda coluna */
-.footer__col:nth-child(1) .logo {
+.footer-col:nth-child(1) .logo {
   display: flex !important;
   justify-content: center !important;
   align-items: center;
@@ -769,7 +764,7 @@ body {
 
 /* reponsivit */
 @media (width > 576px) {
-  .footer__container {
+  .footer-container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -780,7 +775,7 @@ body {
     align-items: center;
     margin-top: -80px !important;;
   }
-  .footer__container {
+  .footer-container {
     grid-template-columns: repeat(2, 1fr);
 
   }

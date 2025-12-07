@@ -17,7 +17,7 @@ ScrollReveal().reveal(".header_container h1", {
 });
 
 // about container
-ScrollReveal().reveal(".about__image img", {
+ScrollReveal().reveal(".about-image img", {
   ...scrollRevealOption,
   origin: "left",
 });
@@ -48,12 +48,6 @@ ScrollReveal().reveal(".gallery-grid", {
 });
 // finishe animation
 
-// Formata YYYY-MM-DD → DD/MM/YYYY
-// function formatDate(isoDate) {
-//   if (!isoDate) return "";
-//   const [y, m, d] = isoDate.split("-");
-//   return `${d}/${m}/${y}`;
-// }
 
 // ======================================================
 // FORMATA datas  →  sempre retorna DD/MM/YYYY
@@ -608,7 +602,7 @@ const card = `
     <div class="room-info">
       <h3 class="room-name">${room.name}</h3>
 
-      <!-- 🔥 Mostra aviso se o quarto estiver indisponível -->
+      <!-- Mostra aviso se o quarto estiver indisponível -->
       ${!available ? `
         <div class="room-unavailable-msg">
           <i class="ri-error-warning-line"></i>
@@ -625,9 +619,9 @@ const card = `
       </ul>
 
       <div class="room-footer">
-        <span class="room-price">$${room.price}/night</span>
+        <span class="room-price">€${room.price}/night</span>
 
-        <!-- 🔥 Se indisponível, desabilita o botão -->
+        <!-- Se indisponível, desabilita o botão -->
         <button class="btn select-room-btn" data-id="${room.id}" 
           ${!available ? "disabled" : ""}>
           ${available ? "Select Room" : "Unavailable"}
