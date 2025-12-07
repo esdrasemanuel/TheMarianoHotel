@@ -1,294 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/airbnb.css">
-<title>The Mariano Hotel</title>
-  </head>
-  <body>
-<header class="header_booking">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-             <div class="logo">
-            <a href="#"><img src="images/logo.png" alt="logo" /></a>
-          </div>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="./index.html">Home </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="./index.html#about">About</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="./gallery.html">Gallery</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-      <div class="section-container header_container" id="home">
-        <h1>Choose Your Room<br /></h1>
-      </div>
-</header>
-<section class="booking-summary section-container">
-
-  <div class="booking-row">
-
-    <!-- Breadcrumbs -->
-   <div class="breadcrumbs">
-      <span id="crumb-rooms">Choose Your Room</span>
-      <span class="arrow">›</span>
-      <span id="crumb-extras">Add Extras</span>
-      <span class="arrow">›</span>
-      <span id="crumb-details">Your Details</span>
-    </div>
-
-
-    <!-- Booking Information -->
-    <div class="booking-info">
-
-      <div class="info-item">
-        <i class="ri-calendar-2-line"></i>
-        <span id="summary-checkin">--</span>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="info-item">
-        <i class="ri-moon-clear-line"></i>
-        <span id="summary-nights">--</span>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="info-item">
-        <i class="ri-hotel-bed-line"></i>
-        <span id="summary-rooms">1</span>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="info-item">
-        <i class="ri-user-3-line"></i>
-        <span id="summary-guests">--</span>
-      </div>
-
-    </div>
-
-    <!-- Edit Button -->
-    <div class="edit-btn-container">
-      <button class="btn">Edit Booking</button>
-    </div>
-
-  </div>
-
-  <!-- ===========================
-     EDIT BOOKING PANEL (HIDDEN)
-     =========================== -->
-<div id="edit-panel" class="edit-panel">
-
-  <div class="edit-panel-content">
-
-    <div class="edit-panel-header">
-      <h3>Edit Your Booking</h3>
-      <button id="close-edit" class="close-btn">✕</button>
-    </div>
-
-    <form id="edit-form">
-
-      <!-- Dates -->
-      <div class="edit-field icon-field">
-         <label>Dates</label>
-
-         <div class="input-icon-wrapper">
-            <i class="ri-calendar-2-line"></i>
-            <input type="text" id="edit-dates" placeholder="Select dates">
-         </div>
-         </div>
-
-      <!-- Guests -->
-      <div class="edit-field icon-field">
-      <label>Guests</label>
-
-      <div class="input-icon-wrapper">
-         <i class="ri-user-3-line"></i>
-         <input type="number" id="edit-guests" min="1">
-      </div>
-
-      <button class="btn edit-submit">Search Again</button>
-
-    </form>
-
-  </div>
-
-</div>
-</section>
-<section class="rooms-section section-container">
-
-  <!-- Onde os quartos serão adicionados pelo JS -->
-  <!-- STEP 1: LISTA DE QUARTOS -->
-<div id="step-rooms">
-  <h2 class="section-title">Available Rooms</h2>
-  <div id="rooms-container"></div>
-</div>
-
-<!-- =====================================================
-     CONTAINER GERAL DAS ETAPAS (2 COLUNAS)
-     ===================================================== -->
-<section class="booking-steps section-container">
-
-  <div class="steps-grid">
-
-    <!-- ==========================
-         COLUNA 1: CONTEÚDO PRINCIPAL
-         ========================== -->
-    <div class="steps-main">
-
-
-      <!-- =======================
-           STEP 2 — EXTRAS
-           ======================= -->
-      <div id="step-extras" style="display:none;">
-        <h2 class="step-title">Add Extras</h2>
-
-        <!-- Lista de extras -->
-        <div id="extras-container"></div>
-
-        <!-- Botão continuar -->
-       <div class="extras-buttons">
-         <button class="btn back-btn" id="back-rooms">← Back</button>
-         <button class="btn continue-btn" id="go-details">Continue</button>
-      </div>
-      </div>
-
-      <!-- =======================
-           STEP 3 — DADOS DO CLIENTE
-           ======================= -->
-      <div id="step-details" style="display:none;">
-        <h2 class="step-title">Your Details</h2>
-
-        <!-- Formulário -->
-        <form id="details-form" class="details-form">
-
-          <div class="form-row">
-            <label>Full Name</label>
-            <input type="text" id="cust-name" name="name" required>
-          </div>
-
-          <div class="form-row">
-            <label>Email</label>
-            <input type="email" id="cust-email" name="email" required>
-          </div>
-
-          <div class="form-row">
-            <label>Phone</label>
-            <input type="tel" id="cust-phone" required>
-          </div>
-
-          <div class="form-row">
-            <label>Notes (optional)</label>
-            <textarea id="cust-notes"></textarea>
-          </div>
-
-          <h3>Payment</h3>
-
-          <div class="form-row">
-            <label>Card Number</label>
-            <input type="text" id="card-number" required>
-          </div>
-
-          <div class="two-col">
-            <div class="form-row">
-              <label>Expiration</label>
-              <input type="text" id="card-exp" required>
+   <head>
+      <meta charset="UTF-8" >
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+      <link
+         href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css"
+         rel="stylesheet"
+         >
+      <link rel="icon" type="image/x-icon" href="images/logo.png">
+      <link rel="stylesheet" href="styles.css" >
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/airbnb.css">
+      <title>The Mariano Hotel</title>
+   </head>
+   <body>
+      <header class="header_booking">
+         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="logo">
+               <a href="#"><img src="images/logo.png" alt="logo" /></a>
             </div>
-
-            <div class="form-row">
-              <label>CVC</label>
-              <input type="text" id="card-cvc" required>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+               <ul class="navbar-nav">
+                  <li class="nav-item active">
+                     <a class="nav-link" href="./index.html">Home </a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="./index.html#about">About</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="./gallery.html">Gallery</a>
+                  </li>
+               </ul>
             </div>
-          </div>
-          
-           <!-- CAMPOS OCULTOS QUE SÃO AUTOMATICAMENTE PREENCHIDOS PELO JS -->
-          <input type="hidden" name="order_id">
-          <input type="hidden" name="room_name">
-          <input type="hidden" name="room_price">
-          <input type="hidden" name="extras_list">
-          <input type="hidden" name="total_value">
-          <input type="hidden" name="checkin_date">
-          <input type="hidden" name="checkout_date">
-          <input type="hidden" name="total_nights">
-
-          <button class="btn back-btn" id="back-extras">← Back</button>
-          <button class="btn finish-btn" id="finish-booking">Confirm Booking</button>
-        </form>
-      </div>
-
-    </div>
-
-    <!-- ==========================
-         COLUNA 2 — RESUMO DA RESERVA
-         ========================== -->
-    <div class="steps-summary">
-
-      <h3>Your Booking</h3>
-
-      <p><strong>Check-in:</strong> <span id="sum-checkin"></span></p>
-      <p><strong>Nights:</strong> <span id="sum-nights"></span></p>
-      <p><strong>Guests:</strong> <span id="sum-guests"></span></p>
-
-      <hr>
-
-      <h4>Selected Room</h4>
-      <p id="sum-room-name"></p>
-      <p id="sum-room-price"></p>
-
-      <hr>
-
-      <h4>Extras</h4>
-      <div id="sum-extras"></div>
-
-      <hr>
-
-      <p class="sum-total">
-        <strong>Total:</strong> <span id="sum-total"></span>
-      </p>
-
-    </div>
-
-  </div>
-
-      <!-- STEP FINAL: BOOKING COMPLETED -->
-      <div id="step-complete" style="display:none; text-align:center;">
-        <h2>Booking Completed!</h2>
-        <p>Your reservation has been successfully created.</p>
-
-        <h3>Your Booking Number:</h3>
-        <p id="booking-number" style="font-size:1.5rem; font-weight:600;"></p>
-
-        <p>A confirmation email was sent with all the details.</p>
-
-        <a href="index.html" class="btn">Return to Home</a>
-      </div>
-
-</section>
-
-
-
-</section>
-         <footer class="footer" id="contact">
+         </nav>
+         <div class="section-container header_container" id="home">
+            <h1>Choose Your Room<br /></h1>
+         </div>
+      </header>
+      <section class="booking-summary section-container">
+         <div class="booking-row">
+            <!-- Breadcrumbs -->
+            <div class="breadcrumbs">
+               <span id="crumb-rooms">Choose Your Room</span>
+               <span class="arrow">›</span>
+               <span id="crumb-extras">Add Extras</span>
+               <span class="arrow">›</span>
+               <span id="crumb-details">Your Details</span>
+            </div>
+            <!-- Booking Information -->
+            <div class="booking-info">
+               <div class="info-item">
+                  <i class="ri-calendar-2-line"></i>
+                  <span id="summary-checkin">--</span>
+               </div>
+               <div class="divider"></div>
+               <div class="info-item">
+                  <i class="ri-moon-clear-line"></i>
+                  <span id="summary-nights">--</span>
+               </div>
+               <div class="divider"></div>
+               <div class="info-item">
+                  <i class="ri-hotel-bed-line"></i>
+                  <span id="summary-rooms">1</span>
+               </div>
+               <div class="divider"></div>
+               <div class="info-item">
+                  <i class="ri-user-3-line"></i>
+                  <span id="summary-guests">--</span>
+               </div>
+            </div>
+            <!-- Edit Button -->
+            <div class="edit-btn-container">
+               <button class="btn">Edit Booking</button>
+            </div>
+         </div>
+         <!-- ===========================
+            EDIT BOOKING PANEL (HIDDEN)
+            =========================== -->
+         <div id="edit-panel" class="edit-panel">
+         <div class="edit-panel-content">
+            <div class="edit-panel-header">
+               <h3>Edit Your Booking</h3>
+               <button id="close-edit" class="close-btn">✕</button>
+            </div>
+            <form id="edit-form">
+               <!-- Dates -->
+               <div class="edit-field icon-field">
+                  <label>Dates</label>
+                  <div class="input-icon-wrapper">
+                     <i class="ri-calendar-2-line"></i>
+                     <input type="text" id="edit-dates" placeholder="Select dates">
+                  </div>
+               </div>
+               <!-- Guests -->
+               <div class="edit-field icon-field">
+                  <label>Guests</label>
+                  <div class="input-icon-wrapper">
+                     <i class="ri-user-3-line"></i>
+                     <input type="number" id="edit-guests" min="1">
+                  </div>
+                  <button class="btn edit-submit">Search Again</button>
+            </form>
+            </div>
+         </div>
+      </section>
+      <section class="rooms-section section-container">
+         <!-- Onde os quartos serão adicionados pelo JS -->
+         <!-- STEP 1: LISTA DE QUARTOS -->
+         <div id="step-rooms">
+            <h2 class="section-title">Available Rooms</h2>
+            <div id="rooms-container"></div>
+         </div>
+         <!--  CONTAINER GERAL DAS ETAPAS (2 COLUNAS)  -->
+         <section class="booking-steps section-container">
+            <div class="steps-grid">
+               <!-- COLUNA 1: CONTEÚDO PRINCIPAL -->
+               <div class="steps-main">
+                  <!-- =======================
+                     STEP 2 — EXTRAS
+                     ======================= -->
+                  <div id="step-extras" style="display:none;">
+                     <h2 class="step-title">Add Extras</h2>
+                     <!-- Lista de extras -->
+                     <div id="extras-container"></div>
+                     <!-- Botão continuar -->
+                     <div class="extras-buttons">
+                        <button class="btn back-btn" id="back-rooms">← Back</button>
+                        <button class="btn continue-btn" id="go-details">Continue</button>
+                     </div>
+                  </div>
+                  <!-- =======================
+                     STEP 3 — DADOS DO CLIENTE
+                     ======================= -->
+                  <div id="step-details" style="display:none;">
+                     <h2 class="step-title">Your Details</h2>
+                     <!-- Formulário -->
+                     <form id="details-form" class="details-form">
+                        <div class="form-row">
+                           <label>Full Name</label>
+                           <input type="text" id="cust-name" name="name" required>
+                        </div>
+                        <div class="form-row">
+                           <label>Email</label>
+                           <input type="email" id="cust-email" name="email" required>
+                        </div>
+                        <div class="form-row">
+                           <label>Phone</label>
+                           <input type="tel" id="cust-phone" required>
+                        </div>
+                        <div class="form-row">
+                           <label>Notes (optional)</label>
+                           <textarea id="cust-notes"></textarea>
+                        </div>
+                        <h3>Payment</h3>
+                        <div class="form-row">
+                           <label>Card Number</label>
+                           <input type="text" id="card-number" required>
+                        </div>
+                        <div class="two-col">
+                           <div class="form-row">
+                              <label>Expiration</label>
+                              <input type="text" id="card-exp" required>
+                           </div>
+                           <div class="form-row">
+                              <label>CVC</label>
+                              <input type="text" id="card-cvc" required>
+                           </div>
+                        </div>
+                        <!-- CAMPOS OCULTOS QUE SÃO AUTOMATICAMENTE PREENCHIDOS PELO JS -->
+                        <input type="hidden" name="order_id">
+                        <input type="hidden" name="room_name">
+                        <input type="hidden" name="room_price">
+                        <input type="hidden" name="extras_list">
+                        <input type="hidden" name="total_value">
+                        <input type="hidden" name="checkin_date">
+                        <input type="hidden" name="checkout_date">
+                        <input type="hidden" name="total_nights">
+                        <button class="btn back-btn" id="back-extras">← Back</button>
+                        <button class="btn finish-btn" id="finish-booking">Confirm Booking</button>
+                     </form>
+                  </div>
+               </div>
+               <!-- ==========================
+                  COLUNA 2 — RESUMO DA RESERVA
+                  ========================== -->
+               <div class="steps-summary">
+                  <h3>Your Booking</h3>
+                  <p><strong>Check-in:</strong> <span id="sum-checkin"></span></p>
+                  <p><strong>Nights:</strong> <span id="sum-nights"></span></p>
+                  <p><strong>Guests:</strong> <span id="sum-guests"></span></p>
+                  <hr>
+                  <h4>Selected Room</h4>
+                  <p id="sum-room-name"></p>
+                  <p id="sum-room-price"></p>
+                  <hr>
+                  <h4>Extras</h4>
+                  <div id="sum-extras"></div>
+                  <hr>
+                  <p class="sum-total">
+                     <strong>Total:</strong> <span id="sum-total"></span>
+                  </p>
+               </div>
+            </div>
+            <!-- STEP FINAL: BOOKING COMPLETED -->
+            <div id="step-complete" style="display:none; text-align:center;">
+               <h2>Booking Completed!</h2>
+               <p>Your reservation has been successfully created.</p>
+               <h3>Your Booking Number:</h3>
+               <p id="booking-number" style="font-size:1.5rem; font-weight:600;"></p>
+               <p>A confirmation email was sent with all the details.</p>
+               <a href="index.html" class="btn">Return to Home</a>
+            </div>
+         </section>
+      </section>
+      <footer class="footer" id="contact">
          <div class="section-container footer__container">
             <div class="footer__col">
                <div class="logo">
@@ -315,21 +246,39 @@
             Copyright © 2025 The Mariano Hotel. All rights reserved.
          </div>
       </footer>
-    <!-- ================================
+      <!-- ================================
          LOADING MODAL (oculto no início)
-      ================================ -->
+         ================================ -->
       <div id="loading-modal" class="loading-modal">
-      <div class="loading-box">
-
-         <!-- 🔥 SEU GIF AQUI -->
-         <img src="images/loading.gif" class="loading-gif" alt="Loading">
-
-         <p>Processing your booking…</p>
+         <div class="loading-box">
+            <!--  SEU GIF AQUI -->
+            <img src="images/loading.gif" class="loading-gif" alt="Loading">
+            <p>Processing your booking…</p>
+         </div>
       </div>
-      </div>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-     <script src="main.js"></script>
-  </body>
+      <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+      <script src="https://unpkg.com/scrollreveal"></script>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+      <script src="main.js"></script>
+      <script>
+        $(document).ready(function () {
+
+            // 📱 Phone Mask (formato internacional opcional)
+            $("#cust-phone").mask("(00) 00000-0000");
+
+            // 💳 Credit Card (agrupamento de 4 dígitos)
+            $("#card-number").mask("0000 0000 0000 0000");
+
+            // 🗓 Expiration Date MM/YY
+            $("#card-exp").mask("00/00");
+
+            // 🔒 CVC
+            $("#card-cvc").mask("000");
+        });
+
+      </script>
+
+   </body>
 </html>

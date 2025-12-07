@@ -332,16 +332,24 @@ const rooms = [
 ];
 
 function updateBreadcrumb(step) {
+  const rooms = document.getElementById("crumb-rooms");
+  const extras = document.getElementById("crumb-extras");
+  const details = document.getElementById("crumb-details");
+
+  // Se não existir breadcrumb na página → sai sem erro
+  if (!rooms || !extras || !details) return;
+
   // limpa o bold de todos
-  document.getElementById("crumb-rooms").classList.remove("crumb-active");
-  document.getElementById("crumb-extras").classList.remove("crumb-active");
-  document.getElementById("crumb-details").classList.remove("crumb-active");
+  rooms.classList.remove("crumb-active");
+  extras.classList.remove("crumb-active");
+  details.classList.remove("crumb-active");
 
   // aplica bold no step atual
-  if (step === "step-rooms") document.getElementById("crumb-rooms").classList.add("crumb-active");
-  if (step === "step-extras") document.getElementById("crumb-extras").classList.add("crumb-active");
-  if (step === "step-details") document.getElementById("crumb-details").classList.add("crumb-active");
+  if (step === "step-rooms") rooms.classList.add("crumb-active");
+  if (step === "step-extras") extras.classList.add("crumb-active");
+  if (step === "step-details") details.classList.add("crumb-active");
 }
+
 
 // step
 function goToStep(step) {
@@ -578,6 +586,11 @@ function isRoomAvailable(room, checkin, checkout) {
 function renderRooms() {
   const container = document.getElementById("rooms-container");
 
+  //  Se não existir container → sai da função
+  if (!container) return;
+
+  container.innerHTML = "";
+
   // Limpa antes de renderizar (caso precise re-renderizar)
   container.innerHTML = "";
 
@@ -688,6 +701,7 @@ document.getElementById("details-form").addEventListener("submit", (e) => {
      })
     .catch((error) => {
       console.error(error);
+
       document.getElementById("loading-modal").style.display = "none";
     });
 
@@ -735,4 +749,7 @@ document.addEventListener("DOMContentLoaded", () => {
     galleryGrid.appendChild(div);
   });
 });
+
+
+
 
