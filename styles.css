@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 /* ----------------- GENERAL SETUPS ----------------- */
 :root { /* global scope */
+  /* color palette variables created for easy use across the site */
   --primary-color: #1B3358;
   --secondary-color: #020c59;
   --text-dark: #0c0a09;
@@ -75,22 +76,22 @@ body {
   z-index: 9999;
 }
 
-/* Torna o menu mobile overlay */
-@media (max-width: 991px) { /* breakpoint do navbar-expand-lg */
+/* Makes the mobile menu appear as an overlay */
+@media (max-width: 991px) { /* breakpoint from navbar-expand-lg */
   #navbarNav {
     position: absolute;
-    top: 86px;       /* altura da navbar */
+    top: 86px;       /* navbar height */
     left: 0;
     width: 100%;
-    background-color: var(--primary-color);/* azul */
+    background-color: var(--primary-color);/* blue */
     z-index: 9999;
     padding: 1rem;
   }
     #navbarNav {
-    margin-left: 0 !important; /* ajuste o valor até ficar perfeito */
+    margin-left: 0 !important; /* adjust until it fits perfectly */
 }
 
-  /* opcional: deixa os itens brancos */
+  /* optional: makes items white */
   #navbarNav .nav-link {
     color: white !important;
   }
@@ -98,12 +99,12 @@ body {
 
 /* BOOKING*/
 
-/* Remove espaço exagerado padrão */
+/* Removes excessive default spacing */
 .booking-summary.section-container {
   padding-top: 1rem !important;
   padding-bottom: 1rem !important;
 }
-/* Remove o padding gigante nas páginas internas */
+/* Removes large padding on internal pages */
 .booking-steps.section-container,
 .rooms-section.section-container {
   padding-top: 1.5rem !important;
@@ -112,21 +113,21 @@ body {
 
 
 /* ---------------------------------
-   UMA ÚNICA LINHA COM TUDO ALINHADO
-   breadcrumbs | infos | botão
+   A SINGLE LINE WITH EVERYTHING ALIGNED
+   breadcrumbs | info | button
    --------------------------------------- */
 .booking-row {
   display: flex;
-  align-items: center;         /* centraliza verticalmente */
-  justify-content: space-between; /* distribui conteúdo */
+  align-items: center;         /* center vertically */
+  justify-content: space-between; /* distribute content */
   gap: 2rem;
-  flex-wrap: nowrap;           /* NÃO deixa quebrar linha */
+  flex-wrap: nowrap;           /* prevents line break */
   width: 100%;
-  white-space: nowrap;         /* impede quebra de texto */
+  white-space: nowrap;         /* prevents text wrapping */
 }
 
 /* ---------------------------------
-   BREADCRUMB ESTILO HOTEL
+   HOTEL-STYLE BREADCRUMB
    --------------------------------- */
 .breadcrumbs {
   display: flex;
@@ -143,7 +144,7 @@ body {
 }
 
 /* ---------------------------------
-   INFOS DO RESUMO
+   SUMMARY INFORMATION
    --------------------------------- */
 .booking-info {
   display: flex;
@@ -175,20 +176,20 @@ body {
 }
 
 /* ---------------------------------
-   BOTÃO EDIT BOOKING
+   EDIT BOOKING BUTTON
    --------------------------------- */
 .edit-btn-container .btn {
   padding: 0.65rem 1.3rem;
-  white-space: nowrap; /* impede quebra */
+  white-space: nowrap; /* prevents wrapping */
 }
 
 /* ---------------------------------
-   RESPONSIVIDADE PARA TELAS MUITO PEQUENAS
-   (apenas se necessário)
+   RESPONSIVENESS FOR VERY SMALL SCREENS
+   (only if necessary)
    --------------------------------- */
 @media (max-width: 900px) {
   .booking-row {
-    flex-wrap: wrap;  /* só quebra se realmente necessário */
+    flex-wrap: wrap;  /* breaks only if needed */
     gap: 1rem;
   }
 }
@@ -197,7 +198,7 @@ body {
 
 /*  */
 
-/* Container do campo */
+/* Field container */
 .booking-input {
   width: 100%;
   display: flex;
@@ -205,7 +206,7 @@ body {
   gap: 5px;
 }
 
-/* Caixa branca com ícone + input alinhados */
+/* White box containing icon + aligned input */
 .booking-field {
   display: flex;
   align-items: center;
@@ -217,7 +218,7 @@ body {
   width: 100%;
 }
 
-/* Ícone alinhado */
+/* Icon alignment */
 .calendar-icon {
   font-size: 22px;
   color: var(--primary-color);
@@ -226,19 +227,19 @@ body {
   align-items: center;
 }
 
-/* Input ocupando todo o espaço */
+/* Input takes full space */
 #dates {
   border: none !important;
   outline: none;
   width: 200px;
   font-size: 1rem;
   background: transparent !important;
-  text-overflow: ellipsis; /* evita corte feio */
+  text-overflow: ellipsis; /* prevents ugly cutoff */
   white-space: nowrap;
   overflow: hidden;
 }
 
-/* Input criado pelo Flatpickr quando altInput = true */
+/* Input created by Flatpickr when altInput = true */
 .form-control.input.active {
     background: transparent !important;
     border: none !important;
@@ -306,10 +307,10 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 
-  height: 326px;          /* altura exata da imagem */
+  height: 326px;          /* exact image height */
   padding-top: 56px;      /* space for navbar */
-  display: block;         /* importantíssimo */
-  position: relative;     /* needed for absolute text */
+  display: block;         /* extremely important */
+  position: relative;     /* required for absolute text */
   overflow: hidden;
 }
 
@@ -331,45 +332,45 @@ body {
 /*  */
 
 /* ---------------------------------================
-   PAINEL SOBREPOSTO ESCONDIDO
-   - Cobre toda a tela
-   - Fundo escuro semi-transparente
-   - Só aparece quando o usuário clica em Edit Booking
+   OVERLAID PANEL (HIDDEN)
+   - Covers the entire screen
+   - Dark semi-transparent background
+   - Appears only when user clicks "Edit Booking"
    ---------------------------------================ */
 .edit-panel {
-  position: fixed;            /* sempre sobre tudo */
+  position: fixed;            /* always above everything */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.45); /* fundo escuro */
-  display: none;                /* começa invisível */
-  justify-content: center;      /* centraliza o painel */
+  background: rgba(0,0,0,0.45); /* dark overlay */
+  display: none;                /* starts hidden */
+  justify-content: center;      /* centers content */
   align-items: center;
-  z-index: 99999;               /* fica acima de tudo */
+  z-index: 99999;               /* above everything */
 }
 
 /* --------------------------------
-   CONTEÚDO DO PAINEL
-   - Caixa branca no centro
-   - Arredondada e com padding
+   PANEL CONTENT
+   - White box in the center
+   - Rounded and padded
    ----------------------------*/
 .edit-panel-content {
   background: white;
   width: 90%;
-  max-width: 500px;              /* limite para monitores */
+  max-width: 500px;              /* limit for large screens */
   border-radius: 12px;
   padding: 2rem;
-  animation: slideDown 0.35s ease; /* animação suave ao aparecer */
+  animation: slideDown 0.35s ease; /* smooth entrance animation */
 }
 
-/* Animação descendo (efeito suave) */
+/* Slide-down animation */
 @keyframes slideDown {
   from { transform: translateY(-30px); opacity: 0; }
   to   { transform: translateY(0); opacity: 1; }
 }
 
-/* Cabeçalho: título + botão fechar alinhados */
+/* Header: title + close button aligned */
 .edit-panel-header {
   display: flex;
   justify-content: space-between;
@@ -377,7 +378,7 @@ body {
   margin-bottom: 1.5rem;
 }
 
-/* Botão X */
+/* Close button (X) */
 .close-btn {
   background: none;
   border: none;
@@ -385,7 +386,7 @@ body {
   cursor: pointer;
 }
 
-/* Campos do formulário */
+/* Form fields */
 .edit-field {
   margin-bottom: 1.5rem;
   display: flex;
@@ -404,35 +405,35 @@ body {
   font-size: 1rem;
 }
 
-/* Botão Search Again ocupa toda a largura */
+/* "Search Again" button takes full width */
 .edit-submit {
   width: 100%;
   margin-top: 0.5rem;
 }
 
 /* --------------------------------------------
-   INPUT COM ÍCONE DENTRO DO PAINEL
-   - Agrupa ícone + input dentro da mesma caixa
+   INPUT WITH ICON INSIDE PANEL
+   - Groups icon + input inside same box
    ----------------------------------------------- */
 .input-icon-wrapper {
-  display: flex;                 /* ícone + input em linha */
-  align-items: center;           /* centraliza verticalmente */
-  gap: 0.6rem;                   /* distância entre ícone e input */
-  border: 1px solid #ccc;        /* borda igual ao input padrão */
-  padding: 0.7rem 1rem;          /* espaço interno */
-  border-radius: 8px;            /* borda arredondada */
-  background: white;             /* fundo branco */
+  display: flex;                 /* inline icon + input */
+  align-items: center;           /* center vertically */
+  gap: 0.6rem;                   /* spacing */
+  border: 1px solid #ccc;        /* consistent styling */
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  background: white;
 }
 
-/* Ícones dentro do painel */
+/* Icons inside panel */
 .input-icon-wrapper i {
   font-size: 1.3rem;
-  color: var(--primary-color);   /* cor do seu tema */
+  color: var(--primary-color);
 }
 
-/* Remove borda do input (já está dentro da caixa) */
+/* Remove default input border */
 .input-icon-wrapper input {
-  flex: 1;                       /* ocupa todo espaço restante */
+  flex: 1;
   border: none;
   outline: none;
   font-size: 1rem;
@@ -529,17 +530,17 @@ body {
 }
 
 /* ============================
-   CONTAINER DOS QUARTOS
+   ROOMS CONTAINER
    ============================ */
 #rooms-container {
   display: flex;
   flex-direction: column;
-  gap: 2rem; /* espaçamento entre cards */
+  gap: 2rem; /* spacing between cards */
   margin-top: 2rem;
 }
 
 /* ============================
-   CARD DO QUARTO
+   ROOM CARD
    ============================ */
 .room-card {
   display: flex;
@@ -551,13 +552,13 @@ body {
   align-items: flex-start;
 }
 
-/* Card fica mais apagado quando indisponível */
+/* Card becomes faded when unavailable */
 .room-card.unavailable {
   opacity: 0.6;
 }
 
 /* ============================
-   IMAGEM DO QUARTO
+   ROOM IMAGE
    ============================ */
 .room-img {
    width: 340px;     
@@ -567,20 +568,20 @@ body {
 }
 
 /* ============================
-   CONTEÚDO DO CARD
+   CARD CONTENT
    ============================ */
 .room-info {
   flex: 1;
 }
 
-/* Nome do quarto */
+/* Room name */
 .room-name {
   font-size: 1.4rem;
   font-weight: 600;
   margin-bottom: .5rem;
 }
 
-/* Descrição */
+/* Description */
 .room-desc {
   font-size: .95rem;
   margin-bottom: .8rem;
@@ -588,7 +589,7 @@ body {
 }
 
 /* ============================
-   LISTA DE DETALHES
+   DETAILS LIST
    ============================ */
 .room-details {
   list-style: none;
@@ -602,7 +603,7 @@ body {
 }
 
 /* ============================
-   AVISO DE INDISPONIBILIDADE
+   UNAVAILABLE WARNING
    ============================ */
 .room-unavailable-msg {
   display: flex;
@@ -621,7 +622,7 @@ body {
 }
 
 /* ============================
-   RODAPÉ DO CARD
+   CARD FOOTER
    ============================ */
 .room-footer {
   display: flex;
@@ -636,7 +637,7 @@ body {
   color: var(--primary-color);
 }
 
-/* Botão de selecionar */
+/* Select button */
 .select-room-btn {
   background: var(--primary-color);
   color: #fff;
@@ -651,7 +652,7 @@ body {
   background: var(--secondary-color);
 }
 
-/* Botão desabilitado */
+/* Disabled button */
 .select-room-btn[disabled] {
   background: #aaa;
   cursor: not-allowed;
@@ -753,7 +754,7 @@ body {
   text-align: center;
 }
 
-/* Centraliza a logo dentro da segunda coluna */
+/* Center logo inside second column */
 .footer-col:nth-child(1) .logo {
   display: flex !important;
   justify-content: center !important;
@@ -765,7 +766,7 @@ body {
 
 /* end footer */
 
-/* reponsivit */
+/* responsive */
 @media (width > 576px) {
   .footer-container {
     grid-template-columns: repeat(2, 1fr);
@@ -783,28 +784,28 @@ body {
   }
 }
 
-/* detais */
+/* details */
 /* -------------------------
-   FORMULÁRIO DA ETAPA FINAL
+   FINAL STEP FORM
    -------------------------- */
 
-/* Container geral do formulário */
+/* Main form container */
 .details-form {
-  max-width: 500px;         /* largura máxima */
-  margin: 2rem auto;        /* centraliza */
+  max-width: 500px;      
+  margin: 2rem auto;      
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;              /* espaçamento vertical */
+  gap: 1.5rem;          
 }
 
-/* Cada campo (label + input) */
+/* Each field (label + input) */
 .form-row {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-/* Inputs e textarea */
+/* Inputs + textarea */
 .form-row input,
 .form-row textarea {
   padding: 12px;
@@ -812,75 +813,75 @@ body {
   border: 1px solid #ccc;
 }
 
-/* Layout para colocar dois campos lado a lado */
+/* Two-column layout */
 .two-col {
   display: flex;
   gap: 1rem;
 }
 
-/* Botão final */
+/* Final button */
 .finish-btn {
   margin-top: 1rem;
   width: 100%;
 }
 
-/* end detais */
+/* end details */
 
-/* colunas */
+/* columns */
 /* ---------------------------------
-   GRID DE DOIS LADOS PARA EXTRAS E DETALHES
+   TWO-SIDE GRID FOR EXTRAS AND DETAILS
    --------------------------------- */
 #step-complete {
   text-align: center;
   max-width: 600px;
-  margin: 0 auto;            /* CENTRALIZA HORIZONTALMENTE */
+  margin: 0 auto;           
   padding: 40px 20px;
 }
 .steps-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr; /* 2/3 para conteúdo, 1/3 para resumo */
+  grid-template-columns: 2fr 1fr; /* 2/3 content, 1/3 summary */
   gap: 2rem;
   margin-top: 2rem;
 }
 
-/* Coluna principal: extras, formulário ou quartos */
+/* Main column (extras, form, rooms) */
 .steps-main {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
-/* Coluna lateral: painel de resumo */
+/* Sidebar column (summary panel) */
 .steps-summary {
   padding: 1.5rem;
   border-radius: 10px;
   background: #fff;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  height: fit-content; /* ajusta à altura do conteúdo */
-  position: sticky; /* fica preso ao rolar */
-  top: 120px; /* distância do topo ao rolar */
+  height: fit-content;
+  position: sticky;
+  top: 120px;
 }
 
-/* Evita que o resumo seja enorme em telas pequenas */
+/* Prevent huge summary on small screens */
 @media (max-width: 900px) {
   .steps-grid {
-    grid-template-columns: 1fr; /* vira 1 coluna só */
+    grid-template-columns: 1fr;
   }
 }
 
-/* end colunas */
+/* end columns */
 
-/* Esconde o resumo na etapa inicial */
+/* Hide summary on initial step */
 .steps-summary {
   display: none;
 }
 
 /* extra image */
-/* Ajuste das imagens dos extras */
+/* Extra images styling */
 .extra-img {
   width: 120px;
   height: 90px;
-  object-fit: cover;   /* garante corte elegante */
+  object-fit: cover;
   border-radius: 8px;
   margin-right: 15px;
 }
@@ -918,22 +919,21 @@ body {
 }
 
 .loading-gif {
-  width: 120px; /* Ajuste como quiser */
+  width: 120px;
   height: auto;
   margin-bottom: 1rem;
 }
 
-/* steps bold actve*/
-
+/* steps bold active */
 .crumb-active {
-  font-weight: 700; /* bold */
+  font-weight: 700;
 }
 
 /* ------------
    GALLERY PAGE
    ------------- */
 
-/* Título central */
+/* Centered title */
 .gallery-title {
   text-align: center;
   font-size: 2rem;
@@ -941,28 +941,28 @@ body {
   font-weight: 600;
 }
 
-/* Grid responsivo - fotos em mosaico */
+/* Responsive mosaic grid */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-auto-rows: 220px; /* altura padrão */
+  grid-auto-rows: 220px;
   gap: 15px;
 }
 
-/* Cada célula (foto) */
+/* Photo cell */
 .gallery-item {
   position: relative;
   overflow: hidden;
   border-radius: 12px;
 }
 
-/* Fotos maiores (mosaico) */
+/* Larger mosaic items */
 .gallery-item.large {
   grid-row: span 2;
   grid-column: span 2;
 }
 
-/* Imagem */
+/* Image */
 .gallery-item img {
   width: 100%;
   height: 100%;
@@ -970,37 +970,37 @@ body {
   transition: transform .35s ease;
 }
 
-/* Zoom leve no hover */
+/* Slight zoom on hover */
 .gallery-item:hover img {
   transform: scale(1.08);
 }
 
-/* Ajuste mobile */
+/* Mobile adjust */
 @media (max-width: 600px) {
   .gallery-grid {
     grid-auto-rows: 160px;
   }
 }
 
-/* Caixa principal do calendário */
-/* Muda o fundo do topo (barra onde aparece January 2026) */
+/* Main flatpickr calendar box */
+/* Change top bar background */
 .flatpickr-calendar .flatpickr-months .flatpickr-month {
   background: var(--primary-color) !important;
   color: white;
 }
 
-/* Remove o gradiente azul do tema */
+/* Remove default gradient */
 .flatpickr-calendar .flatpickr-months {
   background: var(--primary-color) !important;
 }
 
-/* Ajusta também o background atrás das setas (prev / next) */
+/* Navigation arrows */
 .flatpickr-months .flatpickr-prev-month,
 .flatpickr-months .flatpickr-next-month {
   background: var(--primary-color) !important;
 }
 
-/* Mês e ano (texto) */
+/* Month and year text */
 .flatpickr-current-month .cur-month,
 .flatpickr-current-month input.cur-year {
   color: white !important;
@@ -1019,7 +1019,7 @@ body {
   }
 
 #navbarNav {
-    margin-left: -110px; /* ajuste o valor até ficar perfeito */
+    margin-left: -110px; /* adjust until perfect */
 }
 
 /* ======= MOBILE FIX FOR BOOKING FORM ======= */
@@ -1038,7 +1038,7 @@ body {
     align-items: flex-start;
   }
 
-  /* Input ocupa toda a largura */
+  /* Input takes full width */
   .input-group input {
     width: 100%;
   }

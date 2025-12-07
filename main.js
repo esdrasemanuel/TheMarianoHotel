@@ -1,5 +1,4 @@
-
-// animation scrool for texts
+// animation scroll for texts
 const scrollRevealOption = {
   distance: "50px",
   origin: "bottom",
@@ -45,16 +44,16 @@ ScrollReveal().reveal(".gallery-grid", {
   ...scrollRevealOption,
   delay: 500,
 });
-// finishe animation
+// finish animation
 
 // --------------------------------------------
-// FORMATA datas  →  sempre retorna DD/MM/YYYY
-// Aceita: "2025-12-16" OU Date()
+// FORMAT dates → always returns DD/MM/YYYY
+// Accepts: "2025-12-16" OR Date()
 // --------------------------------------------
 function formatDate(dateInput) {
   if (!dateInput) return "";
 
-  // Se já é um objeto Date
+  // If it is already a Date object
   if (dateInput instanceof Date) {
     const d = String(dateInput.getDate()).padStart(2, "0");
     const m = String(dateInput.getMonth() + 1).padStart(2, "0");
@@ -62,13 +61,13 @@ function formatDate(dateInput) {
     return `${d}/${m}/${y}`;
   }
 
-  // Se é string "YYYY-MM-DD"
+  // If it's a "YYYY-MM-DD" string
   if (typeof dateInput === "string" && dateInput.includes("-")) {
     const [y, m, d] = dateInput.split("-");
     return `${d}/${m}/${y}`;
   }
 
-  // Se for string já formatada "DD/MM/YYYY"
+  // If it's already formatted like "DD/MM/YYYY"
   if (typeof dateInput === "string" && dateInput.includes("/")) {
     return dateInput;
   }
@@ -76,7 +75,7 @@ function formatDate(dateInput) {
   return "";
 }
 
-// Converte DD/MM/YYYY → YYYY-MM-DD
+// Converts DD/MM/YYYY → YYYY-MM-DD
 function revertDateFormat(dmy) {
   const [day, month, year] = dmy.split("/");
   return `${year}-${month}-${day}`;
@@ -85,7 +84,7 @@ function revertDateFormat(dmy) {
 // BOOKING
 
 // -------------------------------------------------------
-// CARREGAR PARÂMETROS DA URL (CHECKIN / CHECKOUT / GUEST)
+// LOAD URL PARAMETERS (CHECKIN / CHECKOUT / GUEST)
 // -------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -95,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.checkout = params.get("checkout");
   window.guest = params.get("guest");
 
-  // Atualiza os campos do resumo (se existirem)
+  // Updates the summary fields (if they exist)
   const elCheckin = document.getElementById("summary-checkin");
   if (elCheckin) elCheckin.textContent = formatDate(checkin);
 
@@ -108,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const d2 = new Date(checkout);
     const diff = Math.ceil((d2 - d1) / (1000 * 60 * 60 * 24));
     elNights.textContent = diff;
-    window.nights = diff; // torna global para extras
+    window.nights = diff; // makes global for extras
   }
 
   const elRooms = document.getElementById("summary-rooms");
@@ -116,20 +115,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderRooms();
 
-  //Já marcar o primeiro passo como ativo (bold)
+  // Mark the first step as active (bold)
   updateBreadcrumb("step-rooms");
 
 });
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  // Inicializa flatpickr
+  // Initialize flatpickr
   const calendar = flatpickr("#dates", {
     mode: "range",
     dateFormat: "Y-m-d",
     minDate: "today",
     showMonths: 1,
-     // FORMATAR o valor exibido NO INPUT
+     // FORMAT the value shown in the input
   onClose: function(selectedDates) {
     if (selectedDates.length === 2) {
 
@@ -141,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   });
 
-  // Botão SEARCH
+  // SEARCH button
   const searchBtn = document.getElementById("searchBtn");
 if (searchBtn) {
   document.getElementById("searchBtn").addEventListener("click", () => {
@@ -154,13 +153,13 @@ if (searchBtn) {
       return;
     }
 
-    // Extrai check-in e check-out
+    // Extract check-in and check-out
     var [checkin, checkout] = dates.split(" to ");
 
-    // Monta URL com parâmetros
+    // Build URL with parameters
     const url = `booking.html?checkin=${revertDateFormat(checkin)}&checkout=${revertDateFormat(checkout)}&guest=${guest}`;
 
-    // Redireciona
+    // Redirect
     window.location.href = url;
   });}
 
@@ -168,27 +167,27 @@ if (searchBtn) {
 
 // EDIT BOOKING
 // ----------------------------------------------------
-// FUNÇÃO: abrir o painel quando clicar em Edit Booking
+// FUNCTION: open panel when clicking "Edit Booking"
 // ----------------------------------------------------
 const editBtn = document.querySelector(".edit-btn-container .btn");
 if (editBtn) {
   editBtn.addEventListener("click", () => {
-     // Exibe o painel alterando display para flex
+     // Show the panel changing display to flex
   document.getElementById("edit-panel").style.display = "flex";
 
-  // Preenche automaticamente as datas atuais da pesquisa
+  // Auto-fill current search dates
   document.getElementById("edit-dates").value =
       `${checkin} to ${checkout}`;
 
-  // Preenche o número de hóspedes atual
+  // Fill current number of guests
   document.getElementById("edit-guests").value = guest;
   });
 }
 
 // --------------------------------------------
-// FUNÇÃO: fechar o painel
+// FUNCTION: close panel
 // --------------------------------------------
-// FECHAR O PAINEL — só existe em booking.html
+// CLOSE PANEL — only exists in booking.html
 // --------------------------------------------
 
 const closeEditBtn = document.getElementById("close-edit");
@@ -200,33 +199,33 @@ if (closeEditBtn) {
 }
 
 // -------------------------------------------------
-// FUNÇÃO: processar o formulário e fazer nova busca
+// FUNCTION: process the form and perform new search
 // -------------------------------------------------
 const submitForm = document.getElementById("edit-form");
 if (submitForm) {
 document.getElementById("edit-form").addEventListener("submit", (e) => {
-  e.preventDefault(); // impede recarregamento automático do formulário
+  e.preventDefault(); // prevents auto reload
 
-  // Divide o range de datas "checkin to checkout"
+  // Splits date range "checkin to checkout"
   const newDates = document.getElementById("edit-dates").value.split(" to ");
   const newCheckin = newDates[0];
   const newCheckout = newDates[1];
 
-  // Pega o novo número de hóspedes selecionado
+  // Gets new selected number of guests
   const newGuests = document.getElementById("edit-guests").value;
 
-  // Redireciona para a mesma página com os novos valores
+  // Redirect with updated values
   window.location = `booking.html?checkin=${newCheckin}&checkout=${newCheckout}&guest=${newGuests}`;
 });
 }
 
 // ---------------------------------------
-// ATIVAR FLATPICKR NO PAINEL
-// (calendário para escolher novas datas)
+// ACTIVATE FLATPICKR IN THE PANEL
+// (calendar to select new dates)
 // ---------------------------------------
 flatpickr("#edit-dates", {
-  mode: "range",     // permite selecionar 2 datas (início e fim)
-  minDate: "today",  // evita datas antigas
+  mode: "range",     // allows selecting start + end date
+  minDate: "today",  // avoids past dates
 });
 
 //ROOMS
@@ -242,7 +241,7 @@ const rooms = [
     img: "images/rooms/room1.png",
     description: "Spacious room with balcony, city view and premium amenities.",
 
-    // 🔥 DATAS OCUPADAS (2025 → 2026)
+    // 🔥 OCCUPIED DATES (2025 → 2026)
     unavailableDates: [
       { start: "2025-12-12", end: "2025-12-15" },
       { start: "2026-01-20", end: "2026-01-23" },
@@ -260,7 +259,7 @@ const rooms = [
     img: "images/rooms/room2.png",
     description: "Comfortable room for families or small groups.",
 
-    // 🔥 DATAS OCUPADAS (2025 → 2026)
+    // 🔥 OCCUPIED DATES (2025 → 2026)
     unavailableDates: [
       { start: "2025-12-10", end: "2025-12-15" },
       { start: "2026-01-05", end: "2026-01-09" },
@@ -282,7 +281,7 @@ const rooms = [
     img: "images/rooms/room3.png",
     description: "Luxury suite with lounge area, workspace, and premium service.",
 
-    // 🔥 DATAS OCUPADAS (2025 → 2026) — mais períodos por ser a suíte mais procurada
+    // 🔥 OCCUPIED DATES (2025 → 2026) — more periods because it's highly requested
     unavailableDates: [
       { start: "2025-12-10", end: "2025-12-20" },
       { start: "2026-01-10", end: "2026-01-18" },
@@ -321,15 +320,15 @@ function updateBreadcrumb(step) {
   const extras = document.getElementById("crumb-extras");
   const details = document.getElementById("crumb-details");
 
-  // Se não existir breadcrumb na página → sai sem erro
+  // If breadcrumb doesn’t exist → exit without error
   if (!rooms || !extras || !details) return;
 
-  // limpa o bold de todos
+  // Remove bold from all
   rooms.classList.remove("crumb-active");
   extras.classList.remove("crumb-active");
   details.classList.remove("crumb-active");
 
-  // aplica bold no step atual
+  // Apply bold to the current step
   if (step === "step-rooms") rooms.classList.add("crumb-active");
   if (step === "step-extras") extras.classList.add("crumb-active");
   if (step === "step-details") details.classList.add("crumb-active");
@@ -338,19 +337,19 @@ function updateBreadcrumb(step) {
 
 // step
 function goToStep(step) {
-  // esconde todos
+  // hide all
   document.getElementById("step-rooms").style.display = "none";
   document.getElementById("step-extras").style.display = "none";
   document.getElementById("step-details").style.display = "none";
   document.getElementById("step-complete").style.display = "none";
 
-  // mostra o passo escolhido
+  // show selected step
   document.getElementById(step).style.display = "block";
 
-    // 🔥 aplica BOLD no breadcrumb
+    // 🔥 apply BOLD to breadcrumb
   updateBreadcrumb(step);
 
-    // 🔥 Sempre rola para o topo da seção de booking
+    // 🔥 Always scroll to top of booking section
   window.scrollTo({
     top: 0,
     behavior: "smooth"
@@ -362,13 +361,13 @@ document.addEventListener("click", (e) => {
 
     const roomId = e.target.dataset.id;
 
-    // salve a escolha
+    // save selection
     sessionStorage.setItem("selectedRoom", roomId);
 
-    // carrega extras
+    // load extras
     renderExtras();
 
-    // vai para o próximo passo
+    // go to next step
     goToStep("step-extras");
     document.querySelector(".steps-summary").style.display = "block";
 
@@ -376,18 +375,18 @@ document.addEventListener("click", (e) => {
 });
 
 // -----------------------------------------------
-// BOTÕES DE VOLTAR ENTRE AS ETAPAS
-// Reaproveita a mesma lógica para qualquer "back"
+// BACK BUTTONS BETWEEN STEPS
+// Reuses same logic for any "back"
 // -----------------------------------------------
 document.addEventListener("click", (e) => {
 
-  // Voltar para QUARTOS
+  // Back to ROOMS
   if (e.target.id === "back-rooms") {
     goToStep("step-rooms");
     document.querySelector(".steps-summary").style.display = "none";
   }
 
-  // Voltar para EXTRAS
+  // Back to EXTRAS
   if (e.target.id === "back-extras") {
     goToStep("step-extras");
     document.querySelector(".steps-summary").style.display = "block";
@@ -397,7 +396,7 @@ document.addEventListener("click", (e) => {
 
 
 // ---------------------------------------------
-// Carrega o quarto selecionado no painel resumo
+// Loads selected room into summary panel
 // ---------------------------------------------
 function loadSelectedRoom() {
 
@@ -426,7 +425,7 @@ function loadSelectedRoom() {
 }
 
 // ---------------------------------------
-// Calcula o total final (noites + extras)
+// Calculates final total (nights + extras)
 // ---------------------------------------
 function updateTotal() {
 
@@ -449,7 +448,7 @@ function updateTotal() {
   document.getElementById("sum-total").textContent = "€" + (base + extrasTotal);
 }
 
-// Quando marcar/desmarcar um extra → recalcula total e lista
+// When checking/unchecking an extra → recalculate total and extras list
 document.addEventListener("change", (e) => {
   if (e.target.classList.contains("extra-check")) {
     updateTotal();
@@ -457,42 +456,42 @@ document.addEventListener("change", (e) => {
 });
 
 // ---------------------------------------
-// Quando o usuário clica em "Select Room"
+// When user clicks "Select Room"
 // ---------------------------------------
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("select-room-btn")) {
 
-    // preencher o resumo da etapa de extras
+    // fill summary for extras step
 
     const roomId = e.target.dataset.id;
     const room = rooms.find(r => r.id == roomId);
 
-    // salvar ID do quarto
+    // save room ID
     sessionStorage.setItem("selectedRoom", roomId);
 
-    // calcular noites
+    // calculate nights
     const nightsCalc = Math.ceil(
       (new Date(checkout) - new Date(checkin)) / (1000 * 60 * 60 * 24)
     );
     const base = room.price * nightsCalc;
 
-    // atualizar painel
+    // update panel
     document.getElementById("sum-room-name").textContent = room.name;
 
     document.getElementById("sum-room-price").textContent =
       `€${room.price} × ${nightsCalc} nights = €${base}`;
 
-    // salvar base
+    // save base
     sessionStorage.setItem("baseTotal", base);
 
-    // atualizar total
+    // update total
     updateTotal();
 
     document.getElementById("sum-checkin").textContent = formatDate(checkin);
     document.getElementById("sum-guests").textContent = guest;
     document.getElementById("sum-nights").textContent = nightsCalc;
 
-    // ir para etapa extras
+    // go to extras step
     goToStep("step-extras");
   }
 });
@@ -537,51 +536,49 @@ document.getElementById("go-details").addEventListener("click", () => {
 }
 
 // -----------------------------------------------------------
-// FUNÇÃO QUE VERIFICA SE O INTERVALO SELECIONADO PELO USUÁRIO
-// ENTRA EM CONFLITO COM AS DATAS OCUPADAS DO QUARTO
+// FUNCTION THAT CHECKS IF SELECTED DATE RANGE
+// CONFLICTS WITH ROOM'S OCCUPIED DATES
 // -----------------------------------------------------------
 function isRoomAvailable(room, checkin, checkout) {
 
   const userStart = new Date(checkin);
   const userEnd = new Date(checkout);
 
-  // percorre cada intervalo ocupado
+  // loop through each occupied interval
   for (let range of room.unavailableDates) {
 
     const bookedStart = new Date(range.start);
     const bookedEnd = new Date(range.end);
 
-    // Se houver interseção entre as datas => indisponível
+    // If there is intersection in dates => unavailable
     const overlap =
       userStart <= bookedEnd && userEnd >= bookedStart;
 
     if (overlap) return false;
   }
 
-  return true; // sem conflito
+  return true; // no conflict
 }
 
 /* ============================================================
-   FUNÇÃO PARA RENDERIZAR OS QUARTOS NA TELA
-   - Percorre o array rooms[]
-   - Cria um card HTML para cada quarto
-   - Insere tudo dentro do rooms-container
+   FUNCTION TO RENDER ROOMS ON SCREEN
+   - Loops through rooms[]
+   - Builds HTML cards
+   - Inserts into rooms-container
    ============================================================ */
 function renderRooms() {
   const container = document.getElementById("rooms-container");
 
-  //  Se não existir container → sai da função
+  // If container does not exist → exit
   if (!container) return;
 
   container.innerHTML = "";
 
-  // Limpa antes de renderizar (caso precise re-renderizar)
+  // Clear before rendering again
   container.innerHTML = "";
 
-
-
   rooms.forEach(room => {
-    // Template do card do quarto
+    // Room card template
     var available = isRoomAvailable(room, checkin, checkout);
 
 const card = `
@@ -592,7 +589,7 @@ const card = `
     <div class="room-info">
       <h3 class="room-name">${room.name}</h3>
 
-      <!-- Mostra aviso se o quarto estiver indisponível -->
+      <!-- Shows warning if room is unavailable -->
       ${!available ? `
         <div class="room-unavailable-msg">
           <i class="ri-error-warning-line"></i>
@@ -611,7 +608,7 @@ const card = `
       <div class="room-footer">
         <span class="room-price">€${room.price}/night</span>
 
-        <!-- Se indisponível, desabilita o botão -->
+        <!-- If unavailable, disable button -->
         <button class="btn select-room-btn" data-id="${room.id}" 
           ${!available ? "disabled" : ""}>
           ${available ? "Select Room" : "Unavailable"}
@@ -624,31 +621,31 @@ const card = `
 `;
 
 
-    // Insere o card no container
+    // Insert card into container
     container.insertAdjacentHTML("beforeend", card);
   });
 }
 
 /* ============================================================
-   CHAMA A FUNÇÃO PARA RENDERIZAR OS QUARTOS
+   CALL FUNCTION TO RENDER ROOMS
    ============================================================ */
 
 
 // ====================================================
-// FINISH BOOKING > MOSTRAR LOADING > TELA FINAL > EMAIL
+// FINISH BOOKING > SHOW LOADING > FINAL SCREEN > EMAIL
 // ====================================================
 
 const detailsForm = document.getElementById("details-form");
 if (detailsForm ) {
 document.getElementById("details-form").addEventListener("submit", (e) => {
-  e.preventDefault(); // <-- impede reload!
+  e.preventDefault(); // prevents reload!
 
    const form = document.getElementById("details-form");
   
-  // Gera número de reserva
+  // Generate booking number
   const bookingNumber = "BK" + Math.floor(Math.random() * 900000 + 100000);
 
-  // Preenche os campos ocultos
+  // Fill hidden fields
   form.elements["order_id"].value = bookingNumber;
   form.elements["room_name"].value = document.getElementById("sum-room-name").textContent;
   form.elements["room_price"].value = document.getElementById("sum-room-price").textContent;
@@ -661,23 +658,26 @@ document.getElementById("details-form").addEventListener("submit", (e) => {
   publicKey: "Ut2hO0-i8Q85K2fr2",
   });
 
-    // Mostra o modal de loading com o GIF
+    // Show loading modal with GIF
   document.getElementById("loading-modal").style.display = "flex";
 
   emailjs.sendForm("service_jzfmu5a", "template_p3u4sc3", form)
     .then(() => {
 
-        // Aguarda 3 segundos simulando processamento
+        // Wait 3 seconds simulating processing
         setTimeout(() => {
-                // Esconde o painel lateral
+                // Hide sidebar
         document.querySelector(".steps-summary").style.display = "none";
           const grid = document.querySelector(".steps-grid");
-  if (grid) grid.style.display = "none"; //remover grid para centralizar
-          // Preenche número de reserva na tela final
+  if (grid) grid.style.display = "none"; //remove grid to center
+
+          // Insert booking number on final screen
           document.getElementById("booking-number").textContent = bookingNumber;
-        // Some com o loading
+
+        // Remove loading modal
           document.getElementById("loading-modal").style.display = "none";
-      // Vai para o step final
+
+      // Go to final step
           goToStep("step-complete");
 
         }, 3000);
@@ -695,7 +695,7 @@ document.getElementById("details-form").addEventListener("submit", (e) => {
 // GALLERY
 
 /* ======================================================
-   GALLERY: LISTA DE FOTOS (adicione quanto quiser)
+   GALLERY: PHOTO LIST (add as many as you want)
    ====================================================== */
 
 const galleryImages = [
@@ -717,12 +717,12 @@ const galleryImages = [
 ];
 
 /* ======================================================
-   GALLERY: RENDERIZA AS FOTOS AUTOMATICAMENTE
+   GALLERY: AUTO-RENDERS PHOTOS
    ====================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
   const galleryGrid = document.getElementById("galleryGrid");
-  if (!galleryGrid) return; // ← evita erro ao carregar em outras páginas
+  if (!galleryGrid) return; // avoids errors on other pages
 
   galleryImages.forEach(img => {
     const div = document.createElement("div");
@@ -733,7 +733,3 @@ document.addEventListener("DOMContentLoaded", () => {
     galleryGrid.appendChild(div);
   });
 });
-
-
-
-
