@@ -34,9 +34,18 @@ ScrollReveal().reveal(".about__content .section-header", {
 
 ScrollReveal().reveal(".about__btn", {
   ...scrollRevealOption,
-  delay: 2000,
+  delay: 1000,
 });
 
+
+ScrollReveal().reveal(".section-container.gallery-page h2", {
+  ...scrollRevealOption,
+});
+
+ScrollReveal().reveal(".gallery-grid", {
+  ...scrollRevealOption,
+  delay: 500,
+});
 // finishe animation
 
 // Formata YYYY-MM-DD → DD/MM/YYYY
@@ -150,8 +159,6 @@ if (searchBtn) {
     
     var dates = document.getElementById("dates").value;
     var guest = document.getElementById("guest").value;
-
-    
 
     if (!dates) {
       alert("Please select dates and guest number.");
@@ -579,9 +586,6 @@ function renderRooms() {
   rooms.forEach(room => {
     // Template do card do quarto
     var available = isRoomAvailable(room, checkin, checkout);
-    console.log(room.name, available);
-
-
 
 const card = `
   <div class="room-card ${available ? "" : "unavailable"}">

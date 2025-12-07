@@ -52,6 +52,11 @@ body {
   transition: 0.3s;
 }
 
+.btn.back-btn{
+  background-color: var(--text-light) !important;
+
+}
+
 .btn:hover {
   background-color: var(--secondary-color) !important;
 }
@@ -461,7 +466,7 @@ body {
   color: var(--primary-color);
 }
 
-.booking__container {
+.booking-container {
   padding-block: 0;
 }
 
@@ -511,10 +516,11 @@ body {
   color: var(--text-light);
 }
 
-.about__container {
+.about-container {
   overflow: hidden;
   display: grid;
   gap: 2rem;
+  margin-top: -130px !important;;
 }
 
 .about__image img {
@@ -769,9 +775,10 @@ body {
 }
 
 @media (width > 768px) {
-  .about__container {
+  .about-container {
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
+    margin-top: -80px !important;;
   }
   .footer__container {
     grid-template-columns: repeat(2, 1fr);
@@ -1013,3 +1020,6 @@ body {
   color: white !important;
 }
 
+.gallery-page.section-container {
+  padding-top: 9rem !important;
+}
