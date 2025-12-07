@@ -86,6 +86,9 @@ body {
     z-index: 9999;
     padding: 1rem;
   }
+    #navbarNav {
+    margin-left: 0 !important; /* ajuste o valor até ficar perfeito */
+}
 
   /* opcional: deixa os itens brancos */
   #navbarNav .nav-link {
@@ -108,10 +111,10 @@ body {
 }
 
 
-/* ============================================
+/* ---------------------------------
    UMA ÚNICA LINHA COM TUDO ALINHADO
    breadcrumbs | infos | botão
-   ============================================ */
+   --------------------------------------- */
 .booking-row {
   display: flex;
   align-items: center;         /* centraliza verticalmente */
@@ -122,9 +125,9 @@ body {
   white-space: nowrap;         /* impede quebra de texto */
 }
 
-/* ============================================
+/* ---------------------------------
    BREADCRUMB ESTILO HOTEL
-   ============================================ */
+   --------------------------------- */
 .breadcrumbs {
   display: flex;
   align-items: center;
@@ -139,9 +142,9 @@ body {
   color: #888;
 }
 
-/* ============================================
+/* ---------------------------------
    INFOS DO RESUMO
-   ============================================ */
+   --------------------------------- */
 .booking-info {
   display: flex;
   align-items: center;
@@ -171,18 +174,18 @@ body {
   background-color: #ccc;
 }
 
-/* ============================================
+/* ---------------------------------
    BOTÃO EDIT BOOKING
-   ============================================ */
+   --------------------------------- */
 .edit-btn-container .btn {
   padding: 0.65rem 1.3rem;
   white-space: nowrap; /* impede quebra */
 }
 
-/* ============================================
+/* ---------------------------------
    RESPONSIVIDADE PARA TELAS MUITO PEQUENAS
    (apenas se necessário)
-   ============================================ */
+   --------------------------------- */
 @media (max-width: 900px) {
   .booking-row {
     flex-wrap: wrap;  /* só quebra se realmente necessário */
@@ -327,12 +330,12 @@ body {
 
 /*  */
 
-/* ============================================================
+/* ---------------------------------================
    PAINEL SOBREPOSTO ESCONDIDO
    - Cobre toda a tela
    - Fundo escuro semi-transparente
    - Só aparece quando o usuário clica em Edit Booking
-   ============================================================ */
+   ---------------------------------================ */
 .edit-panel {
   position: fixed;            /* sempre sobre tudo */
   top: 0;
@@ -346,11 +349,11 @@ body {
   z-index: 99999;               /* fica acima de tudo */
 }
 
-/* ============================================================
+/* --------------------------------
    CONTEÚDO DO PAINEL
    - Caixa branca no centro
    - Arredondada e com padding
-   ============================================================ */
+   ----------------------------*/
 .edit-panel-content {
   background: white;
   width: 90%;
@@ -407,10 +410,10 @@ body {
   margin-top: 0.5rem;
 }
 
-/* ============================================================
+/* --------------------------------------------
    INPUT COM ÍCONE DENTRO DO PAINEL
    - Agrupa ícone + input dentro da mesma caixa
-   ============================================================ */
+   ----------------------------------------------- */
 .input-icon-wrapper {
   display: flex;                 /* ícone + input em linha */
   align-items: center;           /* centraliza verticalmente */
@@ -781,9 +784,9 @@ body {
 }
 
 /* detais */
-/* ============================
+/* -------------------------
    FORMULÁRIO DA ETAPA FINAL
-   ============================ */
+   -------------------------- */
 
 /* Container geral do formulário */
 .details-form {
@@ -824,9 +827,9 @@ body {
 /* end detais */
 
 /* colunas */
-/* ==========================================================
+/* ---------------------------------
    GRID DE DOIS LADOS PARA EXTRAS E DETALHES
-   ========================================================== */
+   --------------------------------- */
 #step-complete {
   text-align: center;
   max-width: 600px;
@@ -914,7 +917,6 @@ body {
   text-align: -webkit-center;
 }
 
-/* 🔥 Seu GIF ajustado */
 .loading-gif {
   width: 120px; /* Ajuste como quiser */
   height: auto;
@@ -927,9 +929,9 @@ body {
   font-weight: 700; /* bold */
 }
 
-/* ==========================
+/* ------------
    GALLERY PAGE
-   ========================== */
+   ------------- */
 
 /* Título central */
 .gallery-title {
@@ -939,7 +941,7 @@ body {
   font-weight: 600;
 }
 
-/* Grid responsivo — fotos em mosaico */
+/* Grid responsivo - fotos em mosaico */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
